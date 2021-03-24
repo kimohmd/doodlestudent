@@ -13,3 +13,23 @@ Three videos (in french) are available. They present:
 - and a [short code review](https://drive.google.com/file/d/1jxYNfJdtd4r_pDbOthra360ei8Z17tX_/preview) .
 
 For french native speaker that wants to follow the course. The course web page is available [here](https://hackmd.diverse-team.fr/s/SJqu5DjSD).
+
+# Schema explicatif
+
+![schema](https://github.com/kimohmd/images/blob/master/tlcSchema.png?raw=true)
+
+L'application est constitué de 6 services, chacun tourne dans un docker container:
+
+- Base de données Mysql : container db à partir de l'image mysql
+- Serveur de mail : container mail à partir de l'image bytemark/smtp 
+- Backend quarkus: container doodleback à partir de l'image construite du Dockerfile se trouvant dans ./api
+- Pad : conainer etherpad à partir de l'image etherpad/etherpad:stable
+- phpmyadmin : container myadmin à partir de l'image phpmyadmin 
+- Frontend angular : container doodlefront à partir de l'image construite du Dockerfile se trouvant dans ./front/  (à partir de l'image bunkerity/bunkerized-nginx)
+
+accessible en http sur ahammad.diverse-team.fr à défaut d'une erreur lors de la tentative de bunkerized nginx d'installer les certificat letsencrypt (donc pas de connexion sécurisée en https).
+
+les services : phpmyadmin et le pad ne sont pas accessible car sous-domaines non ajoutés, cependant la configuration a bien été mise en place dans le fichier ./server-confs/api.conf  
+
+##### REMARQUE
+seules les questions 1 --> 4 ont été faites
